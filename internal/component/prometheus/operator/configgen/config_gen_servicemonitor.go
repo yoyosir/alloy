@@ -24,7 +24,11 @@ func (cg *ConfigGenerator) GenerateServiceMonitorConfig(m *promopv1.ServiceMonit
 	if ep.HonorTimestamps != nil {
 		cfg.HonorTimestamps = *ep.HonorTimestamps
 	}
-	dConfig := cg.generateK8SSDConfig(m.Spec.NamespaceSelector, m.Namespace, promk8s.RoleEndpoint, m.Spec.AttachMetadata)
+	role := promk8s.RoleEndpoint
+	if strings.Contains(m.Name, "-slice") {
+		role = promk8s.RoleEndpointSlice
+	}
+	dConfig := cg.generateK8SSDConfig(m.Spec.NamespaceSelector, m.Namespace, role, m.Spec.AttachMetadata)
 	cfg.ServiceDiscoveryConfigs = append(cfg.ServiceDiscoveryConfigs, dConfig)
 
 	if ep.Interval != "" {

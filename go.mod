@@ -851,7 +851,7 @@ replace (
 // TODO: remove replace directive once:
 // * There is a release of Prometheus which addresses https://github.com/prometheus/prometheus/issues/14049,
 // for example, via this implementation: https://github.com/grafana/prometheus/pull/34
-replace github.com/prometheus/prometheus => github.com/yoyosir/prometheus v0.0.0-20241029144333-42581a47a559 // staleness_disabling_v0.51 branch
+replace github.com/prometheus/prometheus => github.com/yoyosir/prometheus v0.0.0-20241029172521-109feea18a40 // staleness_disabling_v0.51 branch
 
 replace gopkg.in/yaml.v2 => github.com/rfratto/go-yaml v0.0.0-20211119180816-77389c3526dc
 
